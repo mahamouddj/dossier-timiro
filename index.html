@@ -1024,6 +1024,120 @@ section.accent{ background: var(--accent); color: #fff; }
   display: flex; flex-wrap: wrap; justify-content: space-between; gap: 18px;
   font: 600 10px/1.5 var(--sans); letter-spacing: .18em; text-transform: uppercase;
 }
+
+/* ==========================================================================
+   MOBILE — optimisations globales (smartphones ≤ 560px)
+   ========================================================================== */
+@media (max-width: 560px){
+  :root{
+    --pad-x: 18px;
+    --pad-y: 56px;
+  }
+
+  /* Header : brand plus compact, dot un peu plus petit */
+  .site-header .wrap{ padding: 10px 14px; gap: 10px; }
+  .brand .txt{ font-size: 10px; letter-spacing: .18em; }
+  .brand .dot{ width: 8px; height: 8px; }
+
+  /* Hero : padding-top réduit, lead resserré */
+  .hero .inner{ padding-top: 108px; padding-bottom: 40px; }
+  .hero .eyebrow{ margin-bottom: 18px; }
+  .hero .eyebrow span:first-child{ width: 36px; }
+  .hero p.lead{ margin-top: 22px; font-size: 15px; }
+  .hero p.lead-en{ font-size: 12px; }
+  .hero-ctas{ margin-top: 26px; gap: 10px; }
+  .hero-ctas a{ padding: 13px 18px; font-size: 11px; flex: 1; justify-content: center; }
+  .hero-facts{ margin-top: 40px; }
+  .hero-facts .fact{ padding: 14px 0; }
+  .hero-facts .v{ font-size: 17px; }
+  .ticker span{ font-size: 11px; padding-right: 32px; letter-spacing: .16em; }
+
+  /* Section head : aside passe en dessous, plus compact */
+  .section-head{ margin-bottom: 30px; gap: 14px; }
+  .section-head .aside{
+    margin-left: 0; text-align: left;
+    display: flex; align-items: baseline; gap: 14px;
+    width: 100%; padding-top: 6px;
+    border-top: 1px solid var(--divider);
+  }
+  section.dark .section-head .aside{ border-top-color: rgba(243,242,242,.18); }
+  .section-head .aside .big{ font-size: 32px; }
+  .section-head .aside .lbl{ margin-top: 0; }
+
+  /* Fiche : gap plus court, note d'enquêteur resserrée */
+  .fiche-grid{ gap: 28px; }
+  .fiche-photo .tag{ font-size: 10px; padding: 10px 14px; bottom: 20px; }
+  .facts-list .row{
+    grid-template-columns: 1fr; gap: 6px; padding: 14px 0;
+  }
+  .facts-list .v{ font-size: 16px; }
+  .facts-list .row.full .redact-full{ padding: 6px 40px; }
+  .investigator-note{ margin-top: 26px; padding: 18px 18px; }
+  .investigator-note p{ font-size: 15px; }
+
+  /* Pièces à conviction : padding un peu plus court, redaction bars alignées */
+  .exhibit{ min-height: 180px; padding: 20px 18px; }
+  .exhibit .text{ font-size: 15px; }
+  .exhibit .redaction{ padding: 22px 18px; }
+  .exhibits-caption{ margin-top: 16px; font-size: 12px; }
+
+  /* Quiz : padding resserré, options plus lisibles au tap */
+  .quiz-q{ padding: 26px 20px; }
+  .quiz-q .qtext{ font-size: 22px; }
+  .quiz-q .score{ margin-top: 22px; }
+  .quiz-q .score .n{ font-size: 30px; }
+  .quiz-a{ padding: 20px; gap: 8px; }
+  .opt{ padding: 14px 14px; font-size: 15px; gap: 12px; }
+  .feedback{ padding-left: 14px; }
+  .feedback p{ font-size: 13.5px; }
+  .feedback button{ padding: 12px 18px; font-size: 10.5px; }
+  .quiz-final{ padding: 36px 22px; }
+  .quiz-final .row{ gap: 22px; }
+  .quiz-final .verdict{ min-width: 0; }
+  .quiz-final .verdict .b{ font-size: 14px; }
+
+  /* Map : hauteur réduite, place-detail plus compact */
+  .map-panel{ min-height: 260px; }
+  .place-detail{ padding: 24px 20px; gap: 20px; }
+  .place-detail .body{ font-size: 15px; }
+  .place-detail .meta{ flex-wrap: wrap; gap: 12px; padding-top: 14px; }
+  .place-detail .meta .v{ font-size: 14px; }
+  .loc-photos{ grid-template-columns: repeat(2, 1fr); }
+
+  /* Vidéo : ratio plus haut pour être visible */
+  .video-box{ aspect-ratio: 4/3; }
+  .video-box .play{
+    border-left-width: 26px; border-top-width: 16px; border-bottom-width: 16px;
+    margin-bottom: 16px;
+  }
+  .video-box .t{ font-size: 13px; letter-spacing: .14em; }
+  .video-box .h{ font-size: 12px; margin-top: 8px; }
+  .video-box .rec{ top: 12px; left: 12px; gap: 7px; }
+  .video-box .cam{ bottom: 12px; right: 12px; font-size: 9px; }
+
+  /* Verdict : stamps en grille 2 colonnes */
+  .verdict .sig{ margin-bottom: 22px; }
+  .verdict .rationale{ margin-top: 26px; }
+  .verdict .stamps{
+    margin-top: 36px; padding-top: 20px; gap: 20px 28px;
+  }
+  .verdict .stamps > div{ min-width: calc(50% - 14px); }
+  .verdict .stamps .v{ font-size: 16px; }
+
+  /* Footer : centré et respirant */
+  .site-footer{ padding: 24px 18px; }
+  .site-footer .wrap{ justify-content: center; text-align: center; gap: 10px; }
+  .site-footer .wrap > *{ flex-basis: 100%; }
+}
+
+/* Très petits écrans (≤ 360px) : dernier resserrage */
+@media (max-width: 360px){
+  .hero h1{ font-size: 58px; }
+  .hero-ctas a{ font-size: 10.5px; padding: 12px 14px; letter-spacing: .1em; }
+  .section-head h2{ font-size: 30px; }
+  .quiz-q .qtext{ font-size: 20px; }
+  .opt{ font-size: 14.5px; padding: 13px 12px; }
+}
 </style>
 </head>
 <body>
