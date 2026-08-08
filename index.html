@@ -1849,7 +1849,7 @@ const mapPanel = $('#mapPanel');
 const placesList = $('#placesList');
 const locPhotos = $('#locPhotos');
 const placesCount = $('#placesCount');
-const revealed = new Set();
+const placesRevealed = new Set();
 let leafletMap = null;
 let leafletMarkers = [];
 
@@ -1913,13 +1913,13 @@ function buildLocPhotos(){
 function refreshMarkers(){
   leafletMarkers.forEach((m, i) => {
     const el = m.getElement();
-    if (el) el.classList.toggle('locked', !revealed.has(i));
+    if (el) el.classList.toggle('locked', !placesRevealed.has(i));
   });
 }
 
 function revealPlace(i, pan){
-  const first = !revealed.has(i);
-  revealed.add(i);
+  const first = !placesRevealed.has(i);
+  placesRevealed.add(i);
   const item = $(`#placesList .place-item[data-i="${i}"]`);
   if (item) item.classList.remove('locked');
   const cell = $(`#locPhotos .cell[data-i="${i}"]`);
@@ -1928,7 +1928,7 @@ function revealPlace(i, pan){
     const v = cell.querySelector('video');
     if (v && first) v.play().catch(() => {});
   }
-  placesCount.textContent = `${revealed.size} / ${PLACES.length}`;
+  placesCount.textContent = `${placesRevealed.size} / ${PLACES.length}`;
   refreshMarkers();
   if (pan && leafletMap){
     const p = PLACES[i];
@@ -1987,7 +1987,7 @@ async function initLeafletMap(){
 
   leafletMarkers = PLACES.map((p, i) => {
     const icon = L.divIcon({
-      className: 'lpin' + (revealed.has(i) ? '' : ' locked'),
+      className: 'lpin' + (placesRevealed.has(i) ? '' : ' locked'),
       html: `<span class="dot"></span><span class="name">${esc(p.n)}</span>`,
       iconSize: [14, 14],
       iconAnchor: [7, 7]
